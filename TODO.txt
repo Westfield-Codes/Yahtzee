@@ -1,3 +1,3 @@
 TODO List:
-1. Create the images for the dice, ensure they are the right size (100x100? Sort out in class).
+1. Create the images for the dice, ensure they are the right size (150x150, but they can be scaled in code if needed).
 2. Start working on the logic for rolling the dice (random chance).
