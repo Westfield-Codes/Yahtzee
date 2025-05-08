@@ -7,9 +7,14 @@ import javax.swing.event.*;
 public class GameGraphics {
     
     private static JFrame frame;
-    
+
+    // CURRENTLY A TEST IMAGE.
     private static final String DIE_ONE_PATH = "./imgs/die_one.png";
 
+    /* 
+     * Shows the UI.
+     * Currently a work in progress. 
+     */
     public static void show() {
         frame = new JFrame();
 
