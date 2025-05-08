@@ -8,26 +8,20 @@ public class GameGraphics {
     
     private static JFrame frame;
     
+    private static final String DIE_ONE_PATH = "./imgs/die_one.png";
+
     public static void show() {
         frame = new JFrame();
 
         frame.setSize(1600, 900);
 
-        // frame.add(new JLabel("Hello World!"));
-
-        GameGraphics.drawDie();
-
-        // ImageIcon img = new ImageIcon("./imgs/die_one.png");
-
-        // JLabel imgLabel = new JLabel(img);
-
-        // frame.add(imgLabel);
+        GameGraphics.drawDie(DIE_ONE_PATH);
 
         frame.setVisible(true);
     }
 
-    private static void drawDie() {
-        ImageIcon img = new ImageIcon("./imgs/die_one.png");
+    private static void drawDie(String path) {
+        ImageIcon img = new ImageIcon(path);
 
         JLabel imgLabel = new JLabel(img);
 
