@@ -1,11 +1,18 @@
 package main.functions;
 
+// Libraries for displaying the window, buttons, images, etc.
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+// Custom implementations for an image and button, respectively
 import main.functions.Die;
+import main.functions.event.HoldButtonAction;
 
+/*
+ * Runs the graphics side of the program.
+ * The majority of the code runs in the show() method. The rest are helper methods.
+ */
 public class GameGraphics {
 
     private static JFrame frame;
@@ -36,6 +43,8 @@ public class GameGraphics {
         GameGraphics.drawDie(DIE_ONE_PATH, 950, 150);
         GameGraphics.drawDie(DIE_ONE_PATH, 1175, 150);
 
+        GameGraphics.drawHoldButton(300, 350);
+
         frame.setVisible(true);
     }
 
@@ -47,8 +56,20 @@ public class GameGraphics {
 
         JLabel imgLabel = new JLabel(img);
 
+        // Parameters for setBounds(): X-pos, Y-pos, Width, Height
         imgLabel.setBounds(x, y, 150, 150);
 
         frame.add(imgLabel);
+    }
+
+    private static void drawHoldButton(int x, int y) {
+        JButton button = new JButton("Hold");
+
+        // The String in the first parameter of HoldButtonAction is what is printed when the button is pressed.
+        button.addActionListener(new HoldButtonAction("Hello World! TEST", new ImageIcon(DIE_ONE_PATH)));
+
+        button.setBounds(x, y, 100, 20);
+
+        frame.add(button);
     }
 }

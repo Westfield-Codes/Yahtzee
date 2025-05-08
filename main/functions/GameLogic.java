@@ -8,4 +8,11 @@ import java.lang.Math;
  */
 public class GameLogic {
 
+    /*
+     * Currently a dummy method for testing event listeners.
+     * Will later be used for setting a die to be held.
+     */
+    public static void holdDie() {
+        System.out.println("Holding die...");
+    }
 }
