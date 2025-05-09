@@ -15,4 +15,7 @@ public class GameLogic {
     public static void holdDie() {
         System.out.println("Holding die...");
     }
+
+
+    // TODO: Implement algorithm to select first user based on highest first roll
 }
