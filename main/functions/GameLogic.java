@@ -16,6 +16,10 @@ public class GameLogic {
         System.out.println("Holding die...");
     }
 
+    public static int rollDie() {
+        return (int) (Math.random() * 6) + 1;
+    }
+
 
     // TODO: Implement algorithm to select first user based on highest first roll
 }
