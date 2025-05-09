@@ -42,11 +42,11 @@ public class GameGraphics {
 
         frame.setLayout(null);
 
-        GameGraphics.drawDie(DIE_ONE_PATH, 275, 150);
-        GameGraphics.drawDie(DIE_ONE_PATH, 500, 150);
-        GameGraphics.drawDie(DIE_ONE_PATH, 725, 150);
-        GameGraphics.drawDie(DIE_ONE_PATH, 950, 150);
-        GameGraphics.drawDie(DIE_ONE_PATH, 1175, 150);
+        GameGraphics.drawDie(DIE_ONE_PATH, 0, 275, 150);
+        GameGraphics.drawDie(DIE_ONE_PATH, 1, 500, 150);
+        GameGraphics.drawDie(DIE_ONE_PATH, 2, 725, 150);
+        GameGraphics.drawDie(DIE_ONE_PATH, 3, 950, 150);
+        GameGraphics.drawDie(DIE_ONE_PATH, 4, 1175, 150);
 
         GameGraphics.drawHoldButton(300, 350, 0);
         GameGraphics.drawHoldButton(525, 350, 1);
@@ -60,8 +60,8 @@ public class GameGraphics {
     /*
      * Draws the die to the screen.
      */
-    public static void drawDie(String path, int x, int y) {
-        Die img = new Die(path);
+    public static void drawDie(String path, int index, int x, int y) {
+        Die img = new Die(path, index);
 
         JLabel imgLabel = new JLabel(img);
 
@@ -88,7 +88,7 @@ public class GameGraphics {
      * Changes the color of a hold button, such that it shows feedback for whether a die is held or not.
      * Parameters: Whether the button is to be enabled (now holding) or not, the index of the button (0-4).
      */
-    private static void colorHoldButton(boolean colorEnabled, int btnIndex) {
+    public static void colorHoldButton(boolean colorEnabled, int btnIndex) {
         // TODO: Work on this function and ensure that it works with a GUI!
         JButton button = allButtons[btnIndex];
 

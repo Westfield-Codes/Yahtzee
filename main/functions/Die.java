@@ -8,14 +8,23 @@ import javax.swing.event.*;
  * An implementation of the ImageIcon class, which allows us to specify the die's number.
  */
 public class Die extends ImageIcon {
-    private String PATH;
     
+    /*
+     * PATH is the file path to the image.
+     * num is the current value of the die (1-6), inclusive
+     * isHeld represents whether the die is being held or not.
+     */
+    private String PATH;
     private int num;
+    private int index;
+    private boolean isHeld;
 
-    public Die(String path) {
+    public Die(String path, int index) {
         super(path);
         this.PATH = path;
         this.num = 1;
+        this.index = index;
+        this.isHeld = false;
     }
 
     public int getNum() {
@@ -24,6 +33,14 @@ public class Die extends ImageIcon {
 
     public String getPath() {
         return this.PATH;
+    }
+
+    public boolean getIsHeld() {
+        return this.isHeld;
+    }
+
+    public int getIndex() {
+        return this.index;
     }
 
     /*
@@ -36,5 +53,9 @@ public class Die extends ImageIcon {
 
     public void setPath(String path) {
         this.PATH = path;
+    }
+
+    public void toggleHeld() {
+        this.isHeld = !this.isHeld;
     }
 }
