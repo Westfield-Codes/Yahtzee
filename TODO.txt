@@ -1,3 +1,4 @@
 TODO List:
 1. Create the images for the dice, ensure they are the right size (150x150, but they can be scaled in code if needed).
-2. Start working on the logic for rolling the dice (random chance).
+2. Work on the "Who rolls first?" system (based on highest single die roll)
+3. Start working on the logic for rolling the dice (random chance).
