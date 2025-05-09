@@ -15,6 +15,7 @@ import main.functions.event.HoldButtonAction;
  */
 public class GameGraphics {
 
+    // The frame that contains the UI.
     private static JFrame frame;
 
     // All of the image paths
@@ -43,7 +44,11 @@ public class GameGraphics {
         GameGraphics.drawDie(DIE_ONE_PATH, 950, 150);
         GameGraphics.drawDie(DIE_ONE_PATH, 1175, 150);
 
-        GameGraphics.drawHoldButton(300, 350);
+        GameGraphics.drawHoldButton(300, 350, 0);
+        GameGraphics.drawHoldButton(525, 350, 1);
+        GameGraphics.drawHoldButton(750, 350, 2);
+        GameGraphics.drawHoldButton(975, 350, 3);
+        GameGraphics.drawHoldButton(1200, 350, 4);
 
         frame.setVisible(true);
     }
@@ -62,11 +67,11 @@ public class GameGraphics {
         frame.add(imgLabel);
     }
 
-    private static void drawHoldButton(int x, int y) {
+    private static void drawHoldButton(int x, int y, int btnIndex) {
         JButton button = new JButton("Hold");
 
         // The String in the first parameter of HoldButtonAction is what is printed when the button is pressed.
-        button.addActionListener(new HoldButtonAction("Hello World! TEST", new ImageIcon(DIE_ONE_PATH)));
+        button.addActionListener(new HoldButtonAction("Hello World! TEST", new ImageIcon(DIE_ONE_PATH), btnIndex));
 
         button.setBounds(x, y, 100, 20);
 
