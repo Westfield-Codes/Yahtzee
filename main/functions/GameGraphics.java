@@ -20,6 +20,8 @@ public class GameGraphics {
 
     private static JButton[] allButtons;
 
+    public static Die[] allDice;
+
     // All of the image paths
     // NOTE: Only DIE_ONE_PATH currently has an image!
     private static final String DIE_ONE_PATH = "./imgs/die_1.png";
@@ -37,6 +39,8 @@ public class GameGraphics {
         frame = new JFrame();
 
         allButtons = new JButton[5];
+
+        allDice = new Die[5];
 
         frame.setSize(1600, 900);
 
@@ -63,6 +67,8 @@ public class GameGraphics {
     public static void drawDie(String path, int index, int x, int y) {
         Die img = new Die(path, index);
 
+        allDice[index] = img;
+
         JLabel imgLabel = new JLabel(img);
 
         // Parameters for setBounds(): X-pos, Y-pos, Width, Height
@@ -75,9 +81,11 @@ public class GameGraphics {
         JButton button = new JButton("Hold");
 
         // The String in the first parameter of HoldButtonAction is what is printed when the button is pressed.
-        button.addActionListener(new HoldButtonAction("Hello World! TEST", new ImageIcon(DIE_ONE_PATH)));
+        button.addActionListener(new HoldButtonAction(btnIndex));
 
         button.setBounds(x, y, 100, 20);
+
+        button.setBackground(Color.gray);
 
         allButtons[btnIndex] = button;
 
