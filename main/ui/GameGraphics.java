@@ -8,6 +8,7 @@ import javax.swing.event.*;
 // Custom implementations for an image and button, respectively
 import main.logic.Die;
 import main.ui.event.HoldButtonAction;
+import main.ui.ScoringMenuUI;
 
 /*
  * Runs the graphics side of the program.
@@ -16,7 +17,7 @@ import main.ui.event.HoldButtonAction;
 public class GameGraphics {
 
     // The frame that contains the UI.
-    private static JFrame frame;
+    public static JFrame frame;
 
     public static Die[] allDice;
 
@@ -47,19 +48,22 @@ public class GameGraphics {
         allDice = new Die[5];
 
         // Draws the dice, with the formate IMG_FILE_PATH, x position, y position
-        GameGraphics.drawDie(DIE_ONE_PATH, 275, 150, 0);
-        GameGraphics.drawDie(DIE_ONE_PATH, 500, 150, 1);
-        GameGraphics.drawDie(DIE_ONE_PATH, 725, 150, 2);
-        GameGraphics.drawDie(DIE_ONE_PATH, 950, 150, 3);
-        GameGraphics.drawDie(DIE_ONE_PATH, 1175, 150, 4);
+        GameGraphics.drawDie(DIE_ONE_PATH, 175, 150, 0);
+        GameGraphics.drawDie(DIE_ONE_PATH, 400, 150, 1);
+        GameGraphics.drawDie(DIE_ONE_PATH, 625, 150, 2);
+        GameGraphics.drawDie(DIE_ONE_PATH, 850, 150, 3);
+        GameGraphics.drawDie(DIE_ONE_PATH, 1075, 150, 4);
 
         // Draws the hold buttons under the dice, with the x and y coordinates, then the button index.
         // The button index is currently used to identify which button is pressed, through a JButton[] array.
-        GameGraphics.drawHoldButton(300, 350, 0);
-        GameGraphics.drawHoldButton(525, 350, 1);
-        GameGraphics.drawHoldButton(750, 350, 2);
-        GameGraphics.drawHoldButton(975, 350, 3);
-        GameGraphics.drawHoldButton(1200, 350, 4);
+        GameGraphics.drawHoldButton(200, 350, 0);
+        GameGraphics.drawHoldButton(425, 350, 1);
+        GameGraphics.drawHoldButton(650, 350, 2);
+        GameGraphics.drawHoldButton(875, 350, 3);
+        GameGraphics.drawHoldButton(1100, 350, 4);
+
+        // Create the scoreboard UI
+        ScoringMenuUI.createScoringMenu();
 
         // Informally creates the frame, so that the user can see it.
         frame.setVisible(true);
