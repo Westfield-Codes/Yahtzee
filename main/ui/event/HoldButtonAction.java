@@ -1,14 +1,14 @@
-package main.functions.event;
+package main.ui.event;
 
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.functions.GameLogic;
-import main.functions.GameGraphics;
+import main.logic.GameLogic;
+import main.ui.GameGraphics;
 
-public class HoldButtonAction implements ActionListener { // extends AbstractAction {
+public class HoldButtonAction implements ActionListener {
     
     private int btnIndex;
 
