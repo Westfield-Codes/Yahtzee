@@ -43,6 +43,10 @@ public class Die extends ImageIcon {
         return this.index;
     }
 
+    public static int rollDie() {
+        return (int) (Math.random() * 6) + 1;
+    }
+
     /*
      * Both sets the num variable AND updates the PATH variable.
      */
