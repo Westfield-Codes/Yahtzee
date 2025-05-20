@@ -1,6 +1,6 @@
 package main.functions;
 
-public Player {
+public class Player {
     private String name;
     private Scoresheet playerScoresheet
 
