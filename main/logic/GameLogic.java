@@ -1,6 +1,5 @@
 package main.functions;
 
-import java.lang.Math;
 import main.functions.Player;
 import main.functions.Die;
 import main.functions.GameGraphics;
