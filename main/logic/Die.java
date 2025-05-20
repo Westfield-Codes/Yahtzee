@@ -1,5 +1,6 @@
 package main.functions;
 
+import java.lang.Math;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
