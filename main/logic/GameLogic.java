@@ -1,9 +1,9 @@
-package main.functions;
+package main.logic;
 
 import java.lang.Math;
-import main.functions.Player;
-import main.functions.Die;
-import main.functions.GameGraphics;
+import main.logic.Player;
+import main.logic.Die;
+import main.logic.GameGraphics;
 
 /*
  * Contains all of the logic to run the game, in the form of helper methods
@@ -33,7 +33,7 @@ public class GameLogic {
         die.toggleHeld();
 
         // die.getIndex() is always the same as btn.getIndex().
-        GameGraphics.colorHoldButton(die.getIsHeld(), die.getIndex());
+        //GameGraphics.colorHoldButton(die.getIsHeld(), die.getIndex());
     }
 
     public static int rollDie() {

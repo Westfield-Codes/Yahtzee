@@ -1,4 +1,4 @@
-package main.functions;
+package main.logic;
 
 // Libraries for displaying the window, buttons, images, etc.
 import java.awt.*;
@@ -6,8 +6,8 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 // Custom implementations for an image and button, respectively
-import main.functions.Die;
-import main.functions.event.HoldButtonAction;
+import main.logic.Die;
+import main.ui.event.HoldButtonAction;
 
 /*
  * Runs the graphics side of the program.
@@ -90,7 +90,7 @@ public class GameGraphics {
         JButton button = new JButton("Hold");
 
         // The String in the first parameter of HoldButtonAction is what is printed when the button is pressed.
-        button.addActionListener(new HoldButtonAction("Hello World! TEST", new ImageIcon(DIE_ONE_PATH), btnIndex));
+        button.addActionListener(new HoldButtonAction("Hello World! TEST", new (DIE_ONE_PATH), btnIndex));
 
         button.setBounds(x, y, 100, 20);
 

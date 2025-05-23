@@ -1,4 +1,4 @@
-package main.functions;
+package main.logic;
 
 import java.awt.*;
 import javax.swing.*;
@@ -20,6 +20,14 @@ public class Die extends ImageIcon {
     private boolean isHeld;
 
     public Die(String path, int index) {
+        super(path);
+        this.PATH = path;
+        this.num = 1;
+        this.index = index;
+        this.isHeld = false;
+    }
+
+    public Die(String path) {
         super(path);
         this.PATH = path;
         this.num = 1;
