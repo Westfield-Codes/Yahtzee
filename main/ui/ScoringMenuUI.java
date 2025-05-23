@@ -43,6 +43,21 @@ public class ScoringMenuUI {
     JLabel yahtzee = new JLabel("Yahtzee");
     JLabel chance = new JLabel("Chance");
 
+    JButton[] btnsScore = new JButton[13];
+
+    for (int i = 0; i < 13; i++) {
+      btnsScore[i] = new JButton("Score");
+    }
+
+    // JButton btnOnes = new JButton("Score");
+    // JButton btnTwo = new JButton("Score");
+    // JButton btnOnes = new JButton("Score");
+    // JButton btnOnes = new JButton("Score");
+    // JButton btnOnes = new JButton("Score");
+    // JButton btnOnes = new JButton("Score");
+    // JButton btnOnes = new JButton("Score");
+    // JButton btnOnes = new JButton("Score");
+
     layout.setAutoCreateGaps(true);
 
     layout.setAutoCreateContainerGaps(true);
@@ -64,24 +79,39 @@ public class ScoringMenuUI {
         .addComponent(yahtzee)
         .addComponent(chance));
 
+    hGroup.addGroup(layout.createParallelGroup()
+        .addComponent(btnsScore[0])
+        .addComponent(btnsScore[1])
+        .addComponent(btnsScore[2])
+        .addComponent(btnsScore[3])
+        .addComponent(btnsScore[4])
+        .addComponent(btnsScore[5])
+        .addComponent(btnsScore[6])
+        .addComponent(btnsScore[7])
+        .addComponent(btnsScore[8])
+        .addComponent(btnsScore[9])
+        .addComponent(btnsScore[10])
+        .addComponent(btnsScore[11])
+        .addComponent(btnsScore[12]));
+
     layout.setHorizontalGroup(hGroup);
 
     GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
 
-    vGroup.addGroup(layout.createParallelGroup().addComponent(ones));
+    vGroup.addGroup(layout.createParallelGroup().addComponent(ones).addComponent(btnsScore[0]));
 
-    vGroup.addComponent(twos);
-    vGroup.addComponent(threes);
-    vGroup.addComponent(fours);
-    vGroup.addComponent(fives);
-    vGroup.addComponent(sixes);
-    vGroup.addComponent(threeOfAKind);
-    vGroup.addComponent(fourOfAKind);
-    vGroup.addComponent(fullHouse);
-    vGroup.addComponent(smallStraight);
-    vGroup.addComponent(largeStraight);
-    vGroup.addComponent(yahtzee);
-    vGroup.addComponent(chance);
+    vGroup.addComponent(twos).addComponent(btnsScore[1]);
+    vGroup.addComponent(threes).addComponent(btnsScore[2]);
+    vGroup.addComponent(fours).addComponent(btnsScore[3]);
+    vGroup.addComponent(fives).addComponent(btnsScore[4]);
+    vGroup.addComponent(sixes).addComponent(btnsScore[5]);
+    vGroup.addComponent(threeOfAKind).addComponent(btnsScore[6]);
+    vGroup.addComponent(fourOfAKind).addComponent(btnsScore[7]);
+    vGroup.addComponent(fullHouse).addComponent(btnsScore[8]);
+    vGroup.addComponent(smallStraight).addComponent(btnsScore[9]);
+    vGroup.addComponent(largeStraight).addComponent(btnsScore[10]);
+    vGroup.addComponent(yahtzee).addComponent(btnsScore[11]);
+    vGroup.addComponent(chance).addComponent(btnsScore[12]);
 
     // vGroup.addGroup(layout.createParallelGroup().addComponent(new
     // JLabel("3")).addComponent(new JLabel("6")));
