@@ -1,5 +1,6 @@
 import java.util.Scanner;
-import DiceCup.java
+import DiceCup.java;
+import Player.java;
 public class Round {
     Scanner input = new Scanner(System.in);
 
@@ -15,7 +16,7 @@ public class Round {
 
     private static void firstRoll(Player player) {
         int score = DiceCup.rollFive();
-        player.playerScoresheet().addScore(score);
+        player.playerScoresheet.addScore(score);
 
     }
 
