@@ -15,7 +15,7 @@ public class Round {
 
     private static void firstRoll(Player player) {
         int score = DiceCup.rollFive();
-        player.
+        player.playerScoresheet().addScore(score);
 
     }
 
