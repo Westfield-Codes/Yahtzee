@@ -20,6 +20,6 @@ public class Player {
     }
 
     public void addToScore(int number) {
-        score += number;
+        this.playerScoresheet.addScore(number);
     }
 }
