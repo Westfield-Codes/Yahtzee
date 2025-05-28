@@ -3,25 +3,43 @@ import DiceCup.java;
 import Player.java;
 
 public class Round {
-    Scanner input = new Scanner(System.in);
+    private Scanner input;
+    private DiceCup cup;
 
-    
-
-    public static void playRound(Player player) {
-        firstRoll(player);
-        String rollAgain = input.nextLine();
-        secondRoll(player, rollAgain);
-        String rollAgain = input.nextLine();
-        thirdRoll(player, rollAgain);
+    public Round() {
+        this.input = new Scanner(System.in);
+        this.cup = new DiceCup();
     }
 
-    private static void firstRoll(Player player) {
-        int score = DiceCup.rollFive();
-        player.playerScoresheet.addScore(score);
+
+    public void playRound(Player player) {
+        int[] held = {True, True, True, True};
+        DiceCup.setHeld(held);
+        takeTurn(player);
 
     }
 
-    // STATIC METHODS
+
+
+    private void takeTurn(Player player) {
+        int roll = 1;
+        boolean shouldContinue = true;
+
+        if (roll <= 3 && shouldContinue) {
+            
+            
+            
+            boolean[] diceToRoll = DiceCup.getHeld();
+            int[] dice = DiceCup.rollDice(diceToRoll);
+            player.addToScore(score);
+        }
+
+
+    }
+
+
+
+    // STATIC METHODS. PROCEDURE BELOW
     
     // May roll dice up to 3 times, may stop & score after 1st or 2nd roll
     // To roll dice, place them in dice cup & roll
