@@ -13,7 +13,42 @@ public DiceCup() {
     hold = new boolean[] {false, false, false, false, false};
 }
 
-getHand() {
+public int[] getHand() {
     return this.hand;
 }
+
+public int rollDie() {
+    return (int) (Math.random() * 6) + 1;
 }
+
+public int[] rerollDice(){
+    for (int i = 0; i < hold.length; i++) {
+        if (!hold[i]) {
+            hand[i] = rollDie();
+        }
+
+        int index = 0;
+
+        for (int j = 0; j < hand.length; j++) {
+        
+            if (hand[j] != 0) {
+                index++;
+            }
+        }
+
+        int[] newArray = new int[index];
+
+        for (int k = 0; k < hand.length; k++) {
+            if (hand[k] != 0) {
+                newArray[k] = hand[k];
+            }
+            else {
+                if (k > 0) {
+                    k--;
+                }
+            }
+        }
+    }
+}
+   
+    }
