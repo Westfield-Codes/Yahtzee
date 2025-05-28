@@ -4,13 +4,13 @@ public class Scoresheet {
     private Player currentPlayer;
     private Dicecup cup;
     private int[] hand;
-    private String[] board;
+    private ArrayList<Integer> board;
 
 public Scoresheet(Player currentPlayer, Dicecup cup) {
     this.currentPlayer = currentPlayer;
     this.cup = cup;
     this.hand = cup.getHand();
-    this.board = new String[14];
+    this.board = new int[14];
 }
 
 public String getName() {
@@ -29,6 +29,7 @@ public boolean hasCategory(String category) {
     }
     return false;
 }
+
 public int scoreHand(String category) {
     int score = 0;
     int[] hand = cup.getHand();
@@ -42,6 +43,34 @@ public int scoreHand(String category) {
                 score += counting;
             }
         }
+    } else {
+        if (category.equals("three of a kind")) {
+            for (int die = 0; die < 6; die++) {
+                score += hand[die];
+            }
+        }
+        if (category.equals("four of a kind")) {
+            for (int die = 0; die < 6; die++) {
+                score += hand[die];
+            }
+        }
+        if (category.equals("full house")) {
+            score += 25;
+        }
+        if (category.equals("small straight")) {
+            score += 30;
+        }
+        if (category.equals("large straight")) {
+            score += 40;
+        }
+        if (category.equals("yahtzee")) {
+            score += 50;
+        }
+        if (category.equals("chance")) {
+            for (int die = 0; die < 6; die++) {
+                score += hand[die];
+            }
+        }
     }
     int newScore = {indexOf(category), score};
     this.board.add(newScore);
@@ -49,5 +78,6 @@ public int scoreHand(String category) {
     System.out.println("Scored: " + this.board[latest].toString());
     return score;
 }
+
 }
  
