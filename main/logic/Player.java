@@ -2,18 +2,24 @@ package main.functions;
 
 public class Player {
     private String name;
-    private int score;
+    private Scoresheet playerScoresheet
 
-    public Player(String name) {
+    // More methods may be necessary for accessing and mutating the Scoresheet object for each player.
+
+    public Player(String name, Scoresheet playerScoresheet) {
         this.name = name;
-        this.score = 0;
+        this.playerScoresheet = playerScoresheet;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getScore() {
-        return score;
+        return playerScoresheet.getScore();
     }
 
     public void addToScore(int number) {
-        score += number;
+        this.playerScoresheet.addScore(number);
     }
 }
