@@ -1,6 +1,6 @@
 package main.functions;
 
-import ava.util.Scanner;
+import java.util.Scanner;
 import DiceCup.java;
 import Player.java;
 
