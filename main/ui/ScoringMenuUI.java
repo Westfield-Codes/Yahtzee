@@ -28,8 +28,6 @@ public class ScoringMenuUI {
       "Score", "Score", "Score", "Score", "Score", "Score", "Score"
   };
 
-  
-
   public static void createScoringMenu() {
     container = new JPanel();
 
@@ -50,6 +48,7 @@ public class ScoringMenuUI {
     jLabels = new JLabel[14];
 
     for (int i = 0; i < 14; i++) {
+
       jLabels[i] = new JLabel(labelIDs[i]);
       btnsScore[i] = new JButton("Score");
 

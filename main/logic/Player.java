@@ -1,4 +1,4 @@
-package main.functions;
+package main.logic;
 
 public class Player {
     private String name;

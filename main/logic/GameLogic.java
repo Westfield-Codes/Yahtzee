@@ -1,9 +1,9 @@
-package main.functions;
+package main.logic;
 
 import java.lang.Math;
-import main.functions.Player;
-import main.functions.Die;
-import main.functions.GameGraphics;
+import main.logic.Player;
+import main.logic.Die;
+import main.ui.GameGraphics;
 
 /*
  * Contains all of the logic to run the game, in the form of helper methods

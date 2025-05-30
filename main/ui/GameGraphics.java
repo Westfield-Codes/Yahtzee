@@ -20,7 +20,7 @@ public class GameGraphics {
     public static JFrame frame;
 
     public static Die[] allDice;
-
+  
     public static JButton[] buttonArray = new JButton[5];
 
     // All of the image paths
@@ -63,6 +63,7 @@ public class GameGraphics {
         GameGraphics.drawHoldButton(650, 350, 2);
         GameGraphics.drawHoldButton(875, 350, 3);
         GameGraphics.drawHoldButton(1100, 350, 4);
+
 
         GameGraphics.drawRollButton(650, 500);
 
@@ -112,6 +113,7 @@ public class GameGraphics {
         button.setBounds(x, y, 100, 20);
 
         frame.add(button);
+
         buttonArray[btnIndex] = button;
     }
 
@@ -152,6 +154,7 @@ public class GameGraphics {
             current.setText("Hold");
         }
         
-
     }
+
+    
 }
