@@ -20,6 +20,8 @@ public class GameGraphics {
     public static JFrame frame;
 
     public static Die[] allDice;
+  
+    public static JButton[] buttonArray = new JButton[5];
 
     // All of the image paths
     // NOTE: Only DIE_ONE_PATH currently has an image!
@@ -61,6 +63,12 @@ public class GameGraphics {
         GameGraphics.drawHoldButton(650, 350, 2);
         GameGraphics.drawHoldButton(875, 350, 3);
         GameGraphics.drawHoldButton(1100, 350, 4);
+
+
+        GameGraphics.drawRollButton(650, 500);
+
+        GameGraphics.drawRoundNumber(50, 50);
+        GameGraphics.drawNumberOfRolls(50, 70);
 
         // Create the scoreboard UI
         ScoringMenuUI.createScoringMenu();
@@ -105,10 +113,48 @@ public class GameGraphics {
         button.setBounds(x, y, 100, 20);
 
         frame.add(button);
+
+        buttonArray[btnIndex] = button;
     }
 
-    // DUMMY FUNCTION
+    // This creates the button that allows the user to roll the dice. 
+    public static void drawRollButton(int x, int y) {
+        JButton rollButton = new JButton("Roll Dice");
+        rollButton.setBounds(x, y, 100, 50);
+        rollButton.setBackground(Color.CYAN);
+        frame.add(rollButton);
+    }
+
+    // This creates the text that lets the user what round number it is. Since the variable for the round the user is on is not created, num is used as a placeholder. 
+    public static void drawRoundNumber(int x, int y) {
+        int num = 0;
+        JLabel round = new JLabel("Round: " + num + "/13");
+        round.setBounds(x, y, 100, 20);
+        frame.add(round);
+    }
+
+    //This creates the text that tells the user how many rolls they have left. The variable for the number of rolls they have used is not created, so num is a placeholder for it. 
+    public static void drawNumberOfRolls(int x, int y) {
+        int num = 0;
+        JLabel rolls = new JLabel("Roll " + num + "/3");
+        rolls.setBounds(x, y, 100, 20);
+        frame.add(rolls);
+    }
+    
+    // This is the function that changes the color of the button depending on if the dice is being held or not. 
     public static void colorHoldButton(boolean isHeld, int btnIndex) {
+        
+        JButton current = buttonArray[btnIndex];
 
+        if (isHeld) {
+            current.setBackground(Color.GREEN);
+            current.setText("Held");
+        } else {
+            current.setBackground(null);
+            current.setText("Hold");
+        }
+        
     }
+
+    
 }

@@ -20,12 +20,12 @@ public class ScoringMenuUI {
   public static String[] labelIDs = {
       "Ones", "Twos", "Threes", "Fours", "Fives", "Sixes",
       "Three of a Kind", "Four of a Kind", "Full House", "Small Straight",
-      "Large Straight", "Yahtzee", "Chance"
+      "Large Straight", "Yahtzee", "Chance", "Total"
   };
 
   public static String[] buttonIDs = {
-      "Score", "Score", "Score", "Score", "Score", "Score",
-      "Score", "Score", "Score", "Score", "Score", "Score", "Score",
+      "Score", "Score", "Score", "Score", "Score", "Score", "Score", 
+      "Score", "Score", "Score", "Score", "Score", "Score", "Score"
   };
 
   public static void createScoringMenu() {
@@ -39,15 +39,16 @@ public class ScoringMenuUI {
     // Creates a temporary border around the scoreboard.
     Border b = BorderFactory.createLineBorder(Color.BLACK);
 
-    GridLayout layout = new GridLayout(13, 2);
+    GridLayout layout = new GridLayout(14, 2);
 
     container.setLayout(layout);
 
-    btnsScore = new JButton[13];
+    btnsScore = new JButton[14];
 
-    jLabels = new JLabel[13];
+    jLabels = new JLabel[14];
 
-    for (int i = 0; i < 13; i++) {
+    for (int i = 0; i < 14; i++) {
+
       jLabels[i] = new JLabel(labelIDs[i]);
       btnsScore[i] = new JButton("Score");
 
