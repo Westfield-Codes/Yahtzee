@@ -5,7 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-// Custom implementations for an image and button, respectively
+// Custom implementations for an image, button and scoring menu, respectively
 import main.logic.Die;
 import main.ui.event.HoldButtonAction;
 import main.ui.ScoringMenuUI;
@@ -22,6 +22,16 @@ public class GameGraphics {
     public static Die[] allDice;
   
     public static JButton[] buttonArray = new JButton[5];
+
+    // The JLabels for the number of rolls and current round number.
+    public static JLabel rollsLabel = new JLabel("");
+
+    public static JLabel roundLabel = new JLabel("");
+
+    // Current number of rolls and the current round number
+    public static int numRolls = 0;
+
+    private static int numRounds = 0;
 
     // All of the image paths
     // NOTE: Only DIE_ONE_PATH currently has an image!
@@ -40,6 +50,8 @@ public class GameGraphics {
 
         // Sets up the JFrame (window that holds the graphics)
         frame = new JFrame();
+
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         frame.setSize(1600, 900);
 
@@ -125,20 +137,22 @@ public class GameGraphics {
         frame.add(rollButton);
     }
 
-    // This creates the text that lets the user what round number it is. Since the variable for the round the user is on is not created, num is used as a placeholder. 
+    // This creates the text that lets the user what round number it is.
     public static void drawRoundNumber(int x, int y) {
-        int num = 0;
-        JLabel round = new JLabel("Round: " + num + "/13");
-        round.setBounds(x, y, 100, 20);
-        frame.add(round);
-    }
+        GameGraphics.numRounds++;
 
-    //This creates the text that tells the user how many rolls they have left. The variable for the number of rolls they have used is not created, so num is a placeholder for it. 
+        GameGraphics.roundLabel = new JLabel("Round: " + GameGraphics.numRounds + "/14");
+        GameGraphics.roundLabel.setBounds(x, y, 100, 20);
+        frame.add(GameGraphics.roundLabel);
+   }
+
+    // This creates the text that tells the user how many rolls they have left.
     public static void drawNumberOfRolls(int x, int y) {
-        int num = 0;
-        JLabel rolls = new JLabel("Roll " + num + "/3");
-        rolls.setBounds(x, y, 100, 20);
-        frame.add(rolls);
+        GameGraphics.numRolls++;
+        
+        GameGraphics.rollsLabel = new JLabel("Roll " + GameGraphics.numRolls + "/3");
+        GameGraphics.rollsLabel.setBounds(x, y, 100, 20);
+        frame.add(GameGraphics.rollsLabel);
     }
     
     // This is the function that changes the color of the button depending on if the dice is being held or not. 
@@ -156,5 +170,25 @@ public class GameGraphics {
         
     }
 
-    
+    // Refreshes the round, so that it is incremented.
+    // NOTE: Later, these should make sure that these numbers do not exceed their limits (14 and 3, respectively)
+    public static void incrementRound() {
+        // Remove and recreate roundLabel
+        frame.remove(GameGraphics.roundLabel);
+
+        GameGraphics.drawRoundNumber(50, 50);
+
+        // IMPORTANT: Make sure to run this whenever updating a piece of the UI!!
+        frame.update(frame.getGraphics());
+    }
+
+    public static void incrementRolls() {
+        // Remove and recreate rollsLabel
+        frame.remove(GameGraphics.rollsLabel);
+
+        GameGraphics.drawNumberOfRolls(50, 70);
+
+        // IMPORTANT: Make sure to run this whenever updating a piece of the UI!!
+        frame.update(frame.getGraphics());
+    }
 }

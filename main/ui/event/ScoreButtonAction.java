@@ -19,6 +19,8 @@ public class ScoreButtonAction implements ActionListener {
   }
 
   public void actionPerformed(ActionEvent e) {
+    GameGraphics.incrementRound();
+
     ScoringMenuUI.buttonIDs[btnIndex] = "";
   
     ScoringMenuUI.container.removeAll();
@@ -33,7 +35,7 @@ public class ScoreButtonAction implements ActionListener {
   private void rebuildContainer(JPanel container, String[] labels, String[] buttons) {
     Border border = BorderFactory.createLineBorder(Color.BLACK);
 
-    for (int i = 0; i < labels.length; i++) {
+    for (int i = 0; i < buttons.length; i++) {
       JLabel label = new JLabel(labels[i]);
 
       label.setBorder(border);
@@ -63,5 +65,19 @@ public class ScoreButtonAction implements ActionListener {
         container.add(button);
       }
     }
+
+    JLabel scoreLabel = new JLabel("Total");
+
+    // Placeholder 0
+    ScoringMenuUI.totalScore = new JLabel("0");
+
+    scoreLabel.setBorder(border);
+    ScoringMenuUI.totalScore.setBorder(border);
+
+    scoreLabel.setHorizontalAlignment(JLabel.CENTER);
+    ScoringMenuUI.totalScore.setHorizontalAlignment(JLabel.CENTER);
+
+    container.add(scoreLabel);
+    container.add(ScoringMenuUI.totalScore);
   }
 }

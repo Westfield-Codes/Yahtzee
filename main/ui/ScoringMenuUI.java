@@ -17,24 +17,23 @@ public class ScoringMenuUI {
 
   public static JLabel[] jLabels;
 
+  public static JLabel totalScore;
+
   public static String[] labelIDs = {
       "Ones", "Twos", "Threes", "Fours", "Fives", "Sixes",
       "Three of a Kind", "Four of a Kind", "Full House", "Small Straight",
-      "Large Straight", "Yahtzee", "Chance", "Total"
+      "Large Straight", "Yahtzee", "Chance"
   };
 
   public static String[] buttonIDs = {
       "Score", "Score", "Score", "Score", "Score", "Score", "Score", 
-      "Score", "Score", "Score", "Score", "Score", "Score", "Score"
+      "Score", "Score", "Score", "Score", "Score", "Score"
   };
 
   public static void createScoringMenu() {
     container = new JPanel();
 
-    // container.setBounds(100, 100, 250, 500);
-
-    // NOTE: Actual bounds are below. The ones above are for TESTING ONLY.
-    container.setBounds(1300, 100, 250, 496);
+    container.setBounds(1300, 100, 250, 492);
 
     // Creates a temporary border around the scoreboard.
     Border b = BorderFactory.createLineBorder(Color.BLACK);
@@ -43,11 +42,11 @@ public class ScoringMenuUI {
 
     container.setLayout(layout);
 
-    btnsScore = new JButton[14];
+    btnsScore = new JButton[13];
 
     jLabels = new JLabel[14];
 
-    for (int i = 0; i < 14; i++) {
+    for (int i = 0; i < 13; i++) {
 
       jLabels[i] = new JLabel(labelIDs[i]);
       btnsScore[i] = new JButton("Score");
@@ -64,6 +63,24 @@ public class ScoringMenuUI {
       container.add(jLabels[i]);
       container.add(btnsScore[i]);
     }
+
+    // Add the "Total" label
+    
+    JLabel scoreLabel = new JLabel("Total");
+
+    // Placeholder 0
+    totalScore = new JLabel("0");
+
+    jLabels[13] = scoreLabel;
+
+    jLabels[13].setBorder(b);
+    totalScore.setBorder(b);
+
+    jLabels[13].setHorizontalAlignment(JLabel.CENTER);
+    totalScore.setHorizontalAlignment(JLabel.CENTER);
+
+    container.add(scoreLabel);
+    container.add(totalScore);
 
     container.setBorder(b);
 
