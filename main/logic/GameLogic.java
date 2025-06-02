@@ -3,6 +3,7 @@ package main.logic;
 import java.lang.Math;
 import main.logic.Player;
 import main.logic.Die;
+import main.logic.Scoresheet;
 import main.ui.GameGraphics;
 
 /*
@@ -18,8 +19,8 @@ public class GameLogic {
      */
     public static Player[] initPlayers(String name1, String name2) {
         Player[] players = new Player[2];
-        players[0] = new Player(name1);
-        players[1] = new Player(name2);
+        players[0] = new Player(name1, new Scoresheet());
+        players[1] = new Player(name2, new Scoresheet());
         return players;
     }
 
