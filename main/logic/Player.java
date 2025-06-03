@@ -1,14 +1,20 @@
 package main.functions;
 
+import java.util.Scanner;
+
 public class Player {
     private String name;
-    private Scoresheet playerScoresheet
+    private Scoresheet playerScoresheet;
+    Scanner input = new Scanner(System.in);
 
     // More methods may be necessary for accessing and mutating the Scoresheet object for each player.
 
     public Player(String name, Scoresheet playerScoresheet) {
-        this.name = name;
+        System.out.println("Enter Player Name: ");
+        this.name = input.nextLine();
         this.playerScoresheet = playerScoresheet;
+
+        input.close();
     }
 
     public String getName() {
