@@ -1,6 +1,5 @@
 package main.functions;
 
-import java.lang.Math;
 import main.functions.Player;
 import main.functions.Die;
 import main.functions.GameGraphics;
@@ -34,10 +33,6 @@ public class GameLogic {
 
         // die.getIndex() is always the same as btn.getIndex().
         GameGraphics.colorHoldButton(die.getIsHeld(), die.getIndex());
-    }
-
-    public static int rollDie() {
-        return (int) (Math.random() * 6) + 1;
     }
 
     // TODO: Implement algorithm to select first user based on highest first roll
