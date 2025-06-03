@@ -31,104 +31,81 @@ public Scoresheet(Player currentPlayer, Dicecup cup) {
 
 }
 
+/* getName() returns name
+ * @return: name of current player
+ */
 public String getName() {
-    return currentPlayer.getName();
+    return "hi";
 }
 
-public int[] getHand() {
-    return cup.getHand();
-}
-
+/* validCategory() checks to see if the category is valid
+ * @param: category
+ * @return: true if valid, false if invalid
+ */
 public boolean validCategory(String category) {
-    for (int i = 0; i < this.categories.length; i++) {
-        if (categories[i].compareTo(category) == 0) {
-            return unused(category);
-        }
-    }
+    // for (int i = 0; i < this.categories.length; i++) {
+    //     if (categories[i].compareTo(category) == 0) {
+    //         return unused(category);
+    //     }
+    // }
     return false;
 }
 
+/* unused() checks to see if the category is used before
+ * @param: category
+ * @return: true if unused, false if used
+ */
 public booleaan unused(String category) {
-     for (int i = 0; i < this.unusedCategories.size(); i++) {
-        if (unusedCategories.get(i).contains(category)) {
+    //  for (int i = 0; i < this.unusedCategories.size(); i++) {
+    //     if (unusedCategories.get(i).contains(category)) {
             
 
-     }
+    //  }
+    return true;
 }
 
-// public int scoreHand(String category) {
-//     int score = 0;
-//     int[] hand = cup.getHand();
-//     if (this.board.hasCategory(category)) {
-//         return -1;
-//     }
-//     else if (indexOf(category) < 6) {
-//         int counting = indexOf(category) + 1;
-//         for (Die die = 0; die < 6; die++) {
-//             if (hand(die) == counting) {
-//                 score += counting;
-//             }
-//         }
-//     } else {
-//         if (category.equals("three of a kind")) {
-//             for (int die = 0; die < 6; die++) {
-//                 score += hand[die];
-//             }
-//         }
-//         if (category.equals("four of a kind")) {
-//             for (int die = 0; die < 6; die++) {
-//                 score += hand[die];
-//             }
-//         }
-//         if (category.equals("full house")) {
-//             score += 25;
-//         }
-//         if (category.equals("small straight")) {
-//             score += 30;
-//         }
-//         if (category.equals("large straight")) {
-//             score += 40;
-//         }
-//         if (category.equals("yahtzee")) {
-//             score += 50;
-//         }
-//         if (category.equals("chance")) {
-//             for (int die = 0; die < 6; die++) {
-//                 score += hand[die];
-//             }
-//         }
-//     }
-//     int newScore = {indexOf(category), score};
-//     this.board.add(newScore);
-//     int latest = this.board.length - 1;
-//     System.out.println("Scored: " + this.board[latest].toString());
-//     return score;
-// }
+/* scoreHand() returns score of hand for given category
+ * @param: category
+ * @return: score
+ */
     public int scoreHand(String category) {
-   int score = 0;
-   int[] hand = cup.getHand();
-   if (!this.board.hasCategory(category)) {
-    for(int i = 0; i < categories)
-        if(indexOf(category) < 6) {
-            scoreSimple(indexOf(category));
-        } else {
-            scoreComplex(indexOf(category));
-        }
-    }
+//    int score = 0;
+//    int[] hand = cup.getHand();
+//    if (!this.board.hasCategory(category)) {
+//     for(int i = 0; i < categories)
+//         if(indexOf(category) < 6) {
+//             scoreSimple(indexOf(category));
+//         } else {
+//             scoreComplex(indexOf(category));
+//         }
+//     }
+        return 1;
 }
+
+/* scoreSimple() scores categories with index less than 6
+ * @param: categoryIndex
+ * @return: score
+ */
 
 public int scoreSimple(int categoryIndex) {
-    int total = 0;
-    for(int value : hand) {
-        if(value == categoryIndex + 1) {
-            total += value;
-        }
-    }
+    // int total = 0;
+    // for(int value : hand) {
+    //     if(value == categoryIndex + 1) {
+    //         total += value;
+    //     }
+    // }
 
-    return total;
+    return 1;
 }
+
+/* Scorecomplex() contains methods to get the score for categories with index greater than 5
+ * @param: categoryIndex
+ * @return: score
+ */
 
 public int scoreComplex(int categoryIndex) {
-    if(categoryIndex == )
-}
+//     if(categoryIndex == ) 
+// } 
+    return 1;
+    }
 }
