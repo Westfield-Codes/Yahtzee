@@ -5,7 +5,7 @@ public class Scoresheet {
     private Dicecup cup;
     private int[] hand;
     private int[] board;
-    private String[] categories;
+    private String[] categories = {"ones","twos","threes","fours","fives","sixes","upper section bonus","three of a kind","four of a kind","full house","small straight","large straight","chance","yahtzee"};
     private ArrayList<String> unusedCategories;
 
 public Scoresheet(Player currentPlayer, Dicecup cup) {
@@ -13,29 +13,8 @@ public Scoresheet(Player currentPlayer, Dicecup cup) {
     this.cup = cup;
     this.hand = cup.getHand();
     this.board = new int[14];
-    this.categories = {"ones","twos","threes","fours","fives","sixes","upper section bonus","three of a kind","four of a kind","full house","small straight","large straight","chance","yahtzee"};
-    this.unusedCategories = new ArrayList<String>();
-    unusedCategories.add("ones");
-    unusedCategories.add("twos");
-    unusedCategories.add("threes");
-    unusedCategories.add("fours");
-    unusedCategories.add("fives");
-    unusedCategories.add("upper section bonus");
-    unusedCategories.add("three of a kind");
-    unusedCategories.add("four of a kind");
-    unusedCategories.add("full house");
-    unusedCategories.add("small straight");
-    unusedCategories.add("large straight");
-    unusedCategories.add("chance");
-    unusedCategories.add("yahtzee");
-
-}
-
-/* getName() returns name
- * @return: name of current player
- */
-public String getName() {
-    return "hi";
+    this.categories = categories;
+    this.unusedCategories = makeCategoryList();
 }
 
 /* validCategory() checks to see if the category is valid
@@ -43,14 +22,22 @@ public String getName() {
  * @return: true if valid, false if invalid
  */
 public boolean validCategory(String category) {
-    // for (int i = 0; i < this.categories.length; i++) {
-    //     if (categories[i].compareTo(category) == 0) {
-    //         return unused(category);
-    //     }
-    // }
+    for (int i = 0; i < this.categories.length; i++) {
+        if (categories[i].compareTo(category) == 0) {
+            return unused(category);
+        }
+    }
     return false;
 }
 
+/* makeCategoryList() makes list of categories that haven't been used yet
+* @return: array list of categories
+*/
+public ArrayList<String> makeCategoryList() {
+    ArrayList<String> unused = new ArrayList<String>();
+    return unused;
+}
+    
 /* unused() checks to see if the category is used before
  * @param: category
  * @return: true if unused, false if used
