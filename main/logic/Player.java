@@ -1,4 +1,4 @@
-package main.functions;
+package main.logic;
 
 import java.util.Scanner;
 

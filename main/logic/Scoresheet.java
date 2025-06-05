@@ -14,8 +14,7 @@ public Scoresheet(Player currentPlayer, Dicecup cup) {
     this.currentPlayer = currentPlayer;
     this.cup = cup;
     this.hand = cup.getHand();
-    this.board = new int[14];
-    this.categories = categories;
+    this.board = makeBoard();
     this.unusedCategories = makeCategoryList();
 }
 
@@ -30,6 +29,17 @@ public boolean validCategory(String category) {
         }
     }
     return false;
+}
+
+/* makeBoard() creates a board with 14 categories
+ * @return: array of integers representing the board
+ */
+public int[] makeBoard() {
+    int[] board = new int[14];
+    for (int i = 0; i < board.length; i++) {
+        board[i] = -1; // -1 means unused
+    }
+    return board;
 }
 
 /* makeCategoryList() makes list of categories that haven't been used yet
