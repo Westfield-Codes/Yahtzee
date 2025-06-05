@@ -15,6 +15,7 @@ public Scoresheet(Player currentPlayer, Dicecup cup) {
     this.board = new int[14];
     this.categories = categories;
     this.unusedCategories = makeCategoryList();
+    // testing
 }
 
 /* validCategory() checks to see if the category is valid
