@@ -98,6 +98,7 @@ public int scoreSimple(int categoryIndex) {
 }
 
 /* Scorecomplex() contains methods to get the score for categories with index greater than 5
+ * Test Comment (remove me)
  * @param: categoryIndex
  * @return: score
  */
