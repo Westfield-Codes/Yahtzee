@@ -1,5 +1,7 @@
 package main.functions;
 
+import java.util.ArrayList;
+
 public class Scoresheet {
     private Player currentPlayer;
     private Dicecup cup;
@@ -95,4 +97,55 @@ public int scoreComplex(int categoryIndex) {
 // } 
     return 1;
     }
+
+    public boolean verify(int categoryIndex) {
+        if(categoryIndex == 6) {
+            for(int i = 0; i < 6; i++) {
+                int repeat = 0;
+                for(int j = 0; j hand.length; j++) {
+                    if(hand[j] == i + 1) {
+                        repeat++;
+                    }
+                }
+                if (repeat => 3) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        if (categoryIndex == 7) {
+             for(int i = 0; i < 6; i++) {
+                int repeat = 0;
+                for(int j = 0; j hand.length; j++) {
+                    if(hand[j] == i + 1) {
+                        repeat++;
+                    }
+                }
+                if (repeat => 4) {
+                    return true;
+                } else {
+                    return false;
+                }
+        }
+    }
+
+    if(categoryIndex == 8) {
+        for(int i = 0; i < 6; i++) {
+            int repeat = 0;
+            for(int j = 0; j hand.length; j++) {
+                if(hand[j] == i + 1) {
+                    repeat++;
+                    
+                }
+            }
+            if (repeat => 3) {
+                
+
+            }
+
+    }
+}
+    
+}
 }
