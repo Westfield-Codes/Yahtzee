@@ -7,8 +7,9 @@ import javax.swing.event.*;
 
 // Custom implementations for an image, button and scoring menu, respectively
 import main.logic.Die;
-import main.ui.event.HoldButtonAction;
 import main.ui.ScoringMenuUI;
+import main.ui.event.HoldButtonAction;
+import main.ui.event.RollButtonAction;
 
 /*
  * Runs the graphics side of the program.
@@ -134,6 +135,7 @@ public class GameGraphics {
         JButton rollButton = new JButton("Roll Dice");
         rollButton.setBounds(x, y, 100, 50);
         rollButton.setBackground(Color.CYAN);
+        rollButton.addActionListener(new RollButtonAction());
         frame.add(rollButton);
     }
 
