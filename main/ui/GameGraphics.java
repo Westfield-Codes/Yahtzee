@@ -24,15 +24,17 @@ public class GameGraphics {
   
     public static JButton[] buttonArray = new JButton[5];
 
+    private static JButton rollButton;
+
     // The JLabels for the number of rolls and current round number.
     public static JLabel rollsLabel = new JLabel("");
 
     public static JLabel roundLabel = new JLabel("");
 
     // Current number of rolls and the current round number
-    public static int numRolls = 0;
+    public static int numRolls = 1;
 
-    private static int numRounds = 0;
+    private static int numRounds = 1;
 
     // All of the image paths
     // NOTE: Only DIE_ONE_PATH currently has an image!
@@ -52,7 +54,7 @@ public class GameGraphics {
         // Sets up the JFrame (window that holds the graphics)
         frame = new JFrame();
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         frame.setSize(1600, 900);
 
@@ -78,7 +80,7 @@ public class GameGraphics {
         GameGraphics.drawHoldButton(1100, 350, 4);
 
 
-        GameGraphics.drawRollButton(650, 500);
+        GameGraphics.drawRollButton(650, 500, "Roll Dice");
 
         GameGraphics.drawRoundNumber(50, 50);
         GameGraphics.drawNumberOfRolls(50, 70);
@@ -131,18 +133,17 @@ public class GameGraphics {
     }
 
     // This creates the button that allows the user to roll the dice. 
-    public static void drawRollButton(int x, int y) {
-        JButton rollButton = new JButton("Roll Dice");
-        rollButton.setBounds(x, y, 100, 50);
-        rollButton.setBackground(Color.CYAN);
-        rollButton.addActionListener(new RollButtonAction());
-        frame.add(rollButton);
+    public static void drawRollButton(int x, int y, String btnText) {
+        GameGraphics.rollButton = new JButton(btnText);
+        GameGraphics.rollButton.setBounds(x, y, 100, 50);
+        GameGraphics.rollButton.setBackground(Color.CYAN);
+        GameGraphics.rollButton.addActionListener(new RollButtonAction());
+        GameGraphics.rollButton.setEnabled(true);
+        frame.add(GameGraphics.rollButton);
     }
 
     // This creates the text that lets the user what round number it is.
     public static void drawRoundNumber(int x, int y) {
-        GameGraphics.numRounds++;
-
         GameGraphics.roundLabel = new JLabel("Round: " + GameGraphics.numRounds + "/14");
         GameGraphics.roundLabel.setBounds(x, y, 100, 20);
         frame.add(GameGraphics.roundLabel);
@@ -150,8 +151,6 @@ public class GameGraphics {
 
     // This creates the text that tells the user how many rolls they have left.
     public static void drawNumberOfRolls(int x, int y) {
-        GameGraphics.numRolls++;
-        
         GameGraphics.rollsLabel = new JLabel("Roll " + GameGraphics.numRolls + "/3");
         GameGraphics.rollsLabel.setBounds(x, y, 100, 20);
         frame.add(GameGraphics.rollsLabel);
@@ -175,16 +174,46 @@ public class GameGraphics {
     // Refreshes the round, so that it is incremented.
     // NOTE: Later, these should make sure that these numbers do not exceed their limits (14 and 3, respectively)
     public static void incrementRound() {
+        GameGraphics.numRounds++;
+
+        // If all rounds have been used, close the app.
+        // TODO: Show a final score screen
+        if (GameGraphics.numRounds > 13) {
+            frame.setVisible(false);
+
+            // This appears to be a messy way to do this, so this will have to be worked on.
+            System.exit(0);
+        }
+
         // Remove and recreate roundLabel
         frame.remove(GameGraphics.roundLabel);
 
         GameGraphics.drawRoundNumber(50, 50);
+
+        // Redraw the roll button
+        frame.remove(GameGraphics.rollButton);
+
+        GameGraphics.drawRollButton(650, 500, "Roll Dice");
+
+        // Reset the roll count
+        GameGraphics.numRolls = 1;
 
         // IMPORTANT: Make sure to run this whenever updating a piece of the UI!!
         frame.update(frame.getGraphics());
     }
 
     public static void incrementRolls() {
+        GameGraphics.numRolls++;
+
+        // "Gray out" the Roll Dice button when all rolls have been used up.
+        if (GameGraphics.numRolls > 2) {
+            frame.remove(GameGraphics.rollButton);
+
+            GameGraphics.drawRollButton(650, 500, "No more rolls");
+        
+            GameGraphics.rollButton.setEnabled(false);
+        }
+        
         // Remove and recreate rollsLabel
         frame.remove(GameGraphics.rollsLabel);
 
