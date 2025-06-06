@@ -40,11 +40,14 @@ public int[] makeBoard() {
     return board;
 }
 
-/* makeCategoryList() makes list of categories that haven't been used yet
+/* makeCategoryList() makes list of categories that haven't been used yet, removing
+ * used categories from the list
+ * @param: none
 * @return: array list of categories
 */
 public ArrayList<String> makeCategoryList() {
     ArrayList<String> unused = new ArrayList<String>();
+    unused.addAll(categories);
     return unused;
 }
     
@@ -53,11 +56,9 @@ public ArrayList<String> makeCategoryList() {
  * @return: true if unused, false if used
  */
 public booleaan unused(String category) {
-    //  for (int i = 0; i < this.unusedCategories.size(); i++) {
-    //     if (unusedCategories.get(i).contains(category)) {
-            
-
-    //  }
+        if (this.unusedCategories.contains(category)) {
+            return false; // category is used
+        }
     return true;
 }
 
@@ -66,16 +67,16 @@ public booleaan unused(String category) {
  * @return: score
  */
     public int scoreHand(String category) {
-//    int score = 0;
-//    int[] hand = cup.getHand();
-//    if (!this.board.hasCategory(category)) {
-//     for(int i = 0; i < categories)
-//         if(indexOf(category) < 6) {
-//             scoreSimple(indexOf(category));
-//         } else {
-//             scoreComplex(indexOf(category));
-//         }
-//     }
+   int score = 0;
+   int[] hand = cup.getHand();
+   if (!this.board.hasCategory(category)) {
+    for(int i = 0; i < categories)
+        if(indexOf(category) < 6) {
+            scoreSimple(indexOf(category));
+        } else {
+            scoreComplex(indexOf(category));
+        }
+    }
         return 1;
 }
 
@@ -85,14 +86,14 @@ public booleaan unused(String category) {
  */
 
 public int scoreSimple(int categoryIndex) {
-    // int total = 0;
-    // for(int value : hand) {
-    //     if(value == categoryIndex + 1) {
-    //         total += value;
-    //     }
-    // }
+    int total = 0;
+    for(int value : this.hand) {
+        if(value == categoryIndex + 1) {
+            total += value;
+        }
+    }
 
-    return 1;
+    return total;
 }
 
 /* Scorecomplex() contains methods to get the score for categories with index greater than 5
@@ -103,6 +104,6 @@ public int scoreSimple(int categoryIndex) {
 public int scoreComplex(int categoryIndex) {
 //     if(categoryIndex == ) 
 // } 
-    return 1;
+    return 2;
     }
 }
