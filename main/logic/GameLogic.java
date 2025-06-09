@@ -1,8 +1,10 @@
-package main.functions;
+package main.logic;
 
-import main.functions.Player;
-import main.functions.Die;
-import main.functions.GameGraphics;
+import java.lang.Math;
+import main.logic.Player;
+import main.logic.Die;
+import main.logic.Scoresheet;
+import main.ui.GameGraphics;
 
 /*
  * Contains all of the logic to run the game, in the form of helper methods
@@ -17,8 +19,8 @@ public class GameLogic {
      */
     public static Player[] initPlayers(String name1, String name2) {
         Player[] players = new Player[2];
-        players[0] = new Player(name1);
-        players[1] = new Player(name2);
+        players[0] = new Player(name1, new Scoresheet());
+        players[1] = new Player(name2, new Scoresheet());
         return players;
     }
 

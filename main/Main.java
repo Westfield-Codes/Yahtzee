@@ -1,6 +1,6 @@
 package main;
 
-import main.functions.GameGraphics;
+import main.ui.GameGraphics;
 
 public class Main {
     public static void main(String[] args) {
