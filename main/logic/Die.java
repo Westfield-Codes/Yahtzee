@@ -1,5 +1,6 @@
 package main.logic;
 
+import java.lang.Math;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -41,6 +42,10 @@ public class Die extends ImageIcon {
 
     public int getIndex() {
         return this.index;
+    }
+
+    public static int rollDie() {
+        return (int) (Math.random() * 6) + 1;
     }
 
     /*
