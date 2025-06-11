@@ -54,7 +54,7 @@ public ArrayList<String> makeCategoryList() {
  * @param: category
  * @return: true if unused, false if used
  */
-public booleaan unused(String category) {
+public boolean unused(String category) {
     //  for (int i = 0; i < this.unusedCategories.size(); i++) {
     //     if (unusedCategories.get(i).contains(category)) {
             
@@ -103,60 +103,108 @@ public int scoreSimple(int categoryIndex) {
  * @return: score
  */
 
-public int scoreComplex(int categoryIndex) {
-//     if(categoryIndex == ) 
-// } 
-    return 1;
-    }
-
     public boolean verify(int categoryIndex) {
+        if(categoryIndex < 6) {
+                return true;
+            }
         if(categoryIndex == 6) {
+            return ofAKind(3);
+            }
+        if(categoryIndex == 7) {
+            return ofAKind(4);
+            }
+
+        if(categoryIndex == 8) {
+            boolean hasTwoPair = false;
+            boolean hasThreePair = false;
             for(int i = 0; i < 6; i++) {
                 int repeat = 0;
                 for(int j = 0; j hand.length; j++) {
                     if(hand[j] == i + 1) {
-                        repeat++;
+                    repeat++;
                     }
                 }
-                if (repeat => 3) {
+                if (repeat == 2) {
+                    hasTwoPair = true;
+                }
+                if (repeat == 3) {
+                hasThreePair = true;
+                }
+                }
+                if(hasTwoPair = true && hasThreePair = true) {
                     return true;
                 } else {
                     return false;
                 }
+                }
+
+            
+        if(categoryIndex == 9) {
+            ArrayList<Integer> ordered = sortArray(getHand());
+            String allDie = "";
+            for(int num : ordered) {
+            allDie += "" + num;
+            }
+
+            if(allDie.contains("1234") || allDie.contains("2345") || allDie.contains("3456")) {
+                return true;
+             } else {
+                return false;
             }
         }
-        if (categoryIndex == 7) {
-             for(int i = 0; i < 6; i++) {
-                int repeat = 0;
-                for(int j = 0; j hand.length; j++) {
-                    if(hand[j] == i + 1) {
-                        repeat++;
-                    }
-                }
-                if (repeat => 4) {
-                    return true;
-                } else {
-                    return false;
-                }
+
+        if (categoryIndex == 10) {
+            ArrayList<Integer> ordered = sortArray(getHand());
+            String allDie = "";
+            for(int num : ordered) {
+                allDie += "" + num;
+            }
+
+            if(allDie.contains("12345") || allDie.contains("23456")) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        if (categoryIndex == 11) {
+             return true;
+        } 
+
+        if(categoryIndex == 12) {
+            return ofAKind(5);
+        }    
     }
 
-    if(categoryIndex == 8) {
+    public int[] sortArray(int[] hand) {
+
+        int[] ordered = new int[5];
+        for(int j = 0; j < hand.length; j++) {
+            int lowest = hand[j];
+            for(int i = j + 1; i < hand.length; i++) {
+                if(hand[i] < lowest) {
+                lowest = hand[i];
+                int storage = hand[j];
+                hand[j] = lowest;
+                hand[i] = storage;
+                }
+            } 
+        }
+        return ordered;
+    }
+
+    public boolean ofAKind(int amount) {
         for(int i = 0; i < 6; i++) {
             int repeat = 0;
             for(int j = 0; j hand.length; j++) {
                 if(hand[j] == i + 1) {
                     repeat++;
-                    
                 }
             }
-            if (repeat => 3) {
-                
-
+            if (repeat => amount) {
+                return true;
+            } else {
+                return false;
             }
-
+        }
     }
-}
-    
-}
 }
