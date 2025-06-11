@@ -70,7 +70,7 @@ public boolean unused(String category) {
     public int scoreHand(String category) {
 //    int score = 0;
 //    int[] hand = cup.getHand();
-//    if (!this.board.hasCategory(category)) {
+//    if (this.board.validCategory(category) && verify(category)) {
 //     for(int i = 0; i < categories)
 //         if(indexOf(category) < 6) {
 //             scoreSimple(indexOf(category));
@@ -103,18 +103,64 @@ public int scoreSimple(int categoryIndex) {
  * @return: score
  */
 
+ public int scoreComplex(int categoryIndex) {
+    if(categoryIndex == 6) {
+        return 35;
+    }
+    if(categoryIndex == 7 || categoryIndex == 8) {
+        int total = 0;
+        for(int value : hand[]) {
+            total += value;
+        }
+        return total;
+    }
+    if(categoryIndex == 9) {
+        return 25;
+    }
+    if(categoryIndex == 10) {
+        return 30;
+    }
+    if(categoryIndex == 11) {
+        return 40;
+    }
+    if(categoryIndex == 12) {
+        int total = 0
+         for(int value : hand[]) {
+            total += value;
+        }
+        return total;
+    }
+
+    if (categoryIndex == 13) {
+        return 50;
+    }
+ }
+
+
+
     public boolean verify(int categoryIndex) {
         if(categoryIndex < 6) {
                 return true;
             }
-        if(categoryIndex == 6) {
+        
+        if(categoryIndex = 6) {
+            int total = 0;
+            for(int i = 0; i < 6; i++) {
+                total += board[i];
+            }
+
+            if(total >= 35) {
+                return true;
+            }
+        }
+        if(categoryIndex == 7) {
             return ofAKind(3);
             }
-        if(categoryIndex == 7) {
+        if(categoryIndex == 8) {
             return ofAKind(4);
             }
 
-        if(categoryIndex == 8) {
+        if(categoryIndex == 9) {
             boolean hasTwoPair = false;
             boolean hasThreePair = false;
             for(int i = 0; i < 6; i++) {
@@ -139,7 +185,7 @@ public int scoreSimple(int categoryIndex) {
                 }
 
             
-        if(categoryIndex == 9) {
+        if(categoryIndex == 10) {
             ArrayList<Integer> ordered = sortArray(getHand());
             String allDie = "";
             for(int num : ordered) {
@@ -153,7 +199,7 @@ public int scoreSimple(int categoryIndex) {
             }
         }
 
-        if (categoryIndex == 10) {
+        if (categoryIndex == 11) {
             ArrayList<Integer> ordered = sortArray(getHand());
             String allDie = "";
             for(int num : ordered) {
@@ -166,11 +212,11 @@ public int scoreSimple(int categoryIndex) {
                 return false;
             }
         }
-        if (categoryIndex == 11) {
+        if (categoryIndex == 12) {
              return true;
         } 
 
-        if(categoryIndex == 12) {
+        if(categoryIndex == 13) {
             return ofAKind(5);
         }    
     }
