@@ -21,11 +21,13 @@ public class Player {
         return name;
     }
 
-    public int getScore() {
-        return playerScoresheet.getScore();
-    }
+/* got rid of these methods, they were not used in the original code and are not necessary for the current functionality */
+    // public int getScore() {
+    //     return playerScoresheet.getScore();
+    // }
 
-    public void addToScore(int number) {
-        this.playerScoresheet.addScore(number);
-    }
+    // This just calls another function, should this one just do the same thing directly with playerScoresheet?
+    // public void addToScore(int number) {
+    //     this.playerScoresheet.addScore(number);
+    // }
 }

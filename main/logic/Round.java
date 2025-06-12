@@ -1,8 +1,7 @@
-package main.functions;
+package main.logic;
 
 import java.util.Scanner;
-import DiceCup.java;
-import Player.java;
+// got rid of unnecessary imports (import.DiceCup.java & import.Player.java)
 
 public class Round {
     private Scanner input;
@@ -21,14 +20,14 @@ public class Round {
         while (roll <= 3 && shouldContinue) {
             // Sets all 5 dice to be rolled on 1st round
             if (roll == 1) {
-                int[] held = {False, False, False, False};
+                boolean[] held = {false, false, false, false, false};
                 cup.setHeld(held);
             }
             
             // Rolls the amount of dice not being held
-            boolean[] diceToRoll = DiceCup.getHeld();
-            int[] dice = DiceCup.rollDice(diceToRoll);
-            player.addToScore(dice);
+            boolean[] diceToRoll = cup.getHeld();
+            Die[] dice = cup.rerollDice(diceToRoll);
+            // player.addToScore(dice);
 
             // Asks user whether to roll again
             System.out.println("Would you like to roll again? (Y/N) ");
