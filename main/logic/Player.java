@@ -20,7 +20,6 @@ public class Player {
     public String getName() {
         return name;
     }
-
 /* got rid of these methods, they were not used in the original code and are not necessary for the current functionality */
     // public int getScore() {
     //     return playerScoresheet.getScore();
