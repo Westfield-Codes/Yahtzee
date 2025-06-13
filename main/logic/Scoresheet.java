@@ -21,6 +21,7 @@ public Scoresheet(Player currentPlayer, Dicecup cup) {
 /* validCategory() checks to see if the category is valid
  * @param: category
  * @return: true if valid, false if invalid
+ * Not needed pm
  */
 public boolean validCategory(String category) {
     for (int i = 0; i < this.categories.length; i++) {
@@ -31,8 +32,22 @@ public boolean validCategory(String category) {
     return false;
 }
 
+/* unused() checks to see if the category is used before
+ * @param: category
+ * @return: true if unused, false if used
+ * Not needed pm
+ */
+public boolean unused(String category) {
+        for (int i = 0; i < this.unusedCategories.size(); i++) {
+        if (unusedCategories.get(i).compareTo(category) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
 /* makeBoard() creates a board with 14 categories
  * @return: array of integers representing the board
+ * Ok pm
  */
 public int[] makeBoard() {
     int[] board = new int[14];
@@ -46,45 +61,57 @@ public int[] makeBoard() {
  * used categories from the list
  * @param: none
 * @return: array list of categories
+* Ok pm
 */
 public ArrayList<String> makeCategoryList() {
     ArrayList<String> unused = new ArrayList<String>();
-    unused.addAll(categories);
+    for(String category : categories) {
+        unused.add(category);
+    }
     return unused;
 }
-    
-/* unused() checks to see if the category is used before
- * @param: category
- * @return: true if unused, false if used
- */
-public booleaan unused(String category) {
-        if (this.unusedCategories.contains(category)) {
-            return false; // category is used
-        }
-    return true;
-}
+
+
 
 /* scoreHand() returns score of hand for given category
  * @param: category
  * @return: score
  */
-    public int scoreHand(String category) {
+public int scoreHand(String category) {
    int score = 0;
    int[] hand = cup.getHand();
-   if (!this.board.hasCategory(category)) {
-    for(int i = 0; i < categories)
+   if (this.board.validCategory(category)) {
+    for(int i = 0; i < categories && verify)
         if(indexOf(category) < 6) {
-            scoreSimple(indexOf(category));
+            score += scoreSimple(indexOf(category));
         } else {
-            scoreComplex(indexOf(category));
+            score += scoreComplex(indexOf(category));
         }
     }
-        return 1;
+        return score;
+}
+
+/* indexOf() returns index of a given category within the categories array
+ * returns -1 if category cannot be found
+ * @param: category
+ * @return: index
+ * Ok pm
+ */
+
+public int indexOf(String target) {
+    for(int i = 0; i < categories.length; i++) {
+        if (categories[i].equals(target)) {
+            return i;
+        } else {
+            return -1;
+        }
+    } 
 }
 
 /* scoreSimple() scores categories with index less than 6
  * @param: categoryIndex
  * @return: score
+ *  Ok pm
  */
 
 public int scoreSimple(int categoryIndex) {
@@ -94,70 +121,163 @@ public int scoreSimple(int categoryIndex) {
             total += value;
         }
     }
-
     return total;
 }
 
-/* Scorecomplex() contains methods to get the score for categories with index greater than 5
+
+/* scoreComplex() contains methods to get the score for categories with index greater than 5
  * Test Comment (remove me)
  * @param: categoryIndex
  * @return: score
  */
-
-public int scoreComplex(int categoryIndex) {
-//     if(categoryIndex == ) 
-// } 
-    return 2;
+ public int scoreComplex(int categoryIndex) {
+    if(categoryIndex == 6) {
+        return 35;
+    }
+    if(categoryIndex == 7 || categoryIndex == 8) {
+        int total = 0;
+        for(int value : hand[]) {
+            total += value;
+        }
+        return total;
+    }
+    if(categoryIndex == 9) {
+        return 25;
+    }
+    if(categoryIndex == 10) {
+        return 30;
+    }
+    if(categoryIndex == 11) {
+        return 40;
+    }
+    if(categoryIndex == 12) {
+        int total = 0;
+         for(int value : hand[]) {
+            total += value;
+        }
+        return total;
     }
 
+    if (categoryIndex == 13) {
+        return 50;
+    }
+ }
+
+
+
     public boolean verify(int categoryIndex) {
-        if(categoryIndex == 6) {
+        if(categoryIndex < 6) {
+                return true;
+            }
+        
+        if(categoryIndex = 6) {
+            int total = 0;
+            for(int i = 0; i < 6; i++) {
+                total += board[i];
+            }
+
+            if(total >= 35) {
+                return true;
+            }
+        }
+        if(categoryIndex == 7) {
+            return ofAKind(3);
+            }
+        if(categoryIndex == 8) {
+            return ofAKind(4);
+            }
+
+        if(categoryIndex == 9) {
+            boolean hasTwoPair = false;
+            boolean hasThreePair = false;
             for(int i = 0; i < 6; i++) {
                 int repeat = 0;
                 for(int j = 0; j hand.length; j++) {
                     if(hand[j] == i + 1) {
-                        repeat++;
+                    repeat++;
                     }
                 }
-                if (repeat => 3) {
+                if (repeat == 2) {
+                    hasTwoPair = true;
+                }
+                if (repeat == 3) {
+                hasThreePair = true;
+                }
+                }
+                if(hasTwoPair = true && hasThreePair = true) {
                     return true;
                 } else {
                     return false;
                 }
+                }
+
+            
+        if(categoryIndex == 10) {
+            ArrayList<Integer> ordered = sortArray(getHand());
+            String allDie = "";
+            for(int num : ordered) {
+            allDie += "" + num;
+            }
+
+            if(allDie.contains("1234") || allDie.contains("2345") || allDie.contains("3456")) {
+                return true;
+             } else {
+                return false;
             }
         }
-        if (categoryIndex == 7) {
-             for(int i = 0; i < 6; i++) {
-                int repeat = 0;
-                for(int j = 0; j hand.length; j++) {
-                    if(hand[j] == i + 1) {
-                        repeat++;
-                    }
-                }
-                if (repeat => 4) {
-                    return true;
-                } else {
-                    return false;
-                }
+
+        if (categoryIndex == 11) {
+            ArrayList<Integer> ordered = sortArray(getHand());
+            String allDie = "";
+            for(int num : ordered) {
+                allDie += "" + num;
+            }
+
+            if(allDie.contains("12345") || allDie.contains("23456")) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        if (categoryIndex == 12) {
+             return true;
+        } 
+
+        if(categoryIndex == 13) {
+            return ofAKind(5);
+        }    
     }
 
-    if(categoryIndex == 8) {
+    public int[] sortArray(int[] hand) {
+
+        int[] ordered = new int[5];
+        for(int j = 0; j < hand.length; j++) {
+            int lowest = hand[j];
+            for(int i = j + 1; i < hand.length; i++) {
+                if(hand[i] < lowest) {
+                lowest = hand[i];
+                int storage = hand[j];
+                hand[j] = lowest;
+                hand[i] = storage;
+                }
+            } 
+        }
+        return ordered;
+    }
+
+    public boolean ofAKind(int amount) {
         for(int i = 0; i < 6; i++) {
             int repeat = 0;
             for(int j = 0; j hand.length; j++) {
                 if(hand[j] == i + 1) {
                     repeat++;
-                    
                 }
             }
-            if (repeat => 3) {
-                
-
+            if (repeat => amount) {
+                return true;
+            } else {
+                return false;
             }
-
+        }
     }
-}
-    
-}
 }
