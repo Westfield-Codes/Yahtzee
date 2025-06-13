@@ -1,16 +1,16 @@
-package main.functions;
+package main.logic;
 
 import java.util.ArrayList;
 
 public class Scoresheet {
     private Player currentPlayer;
-    private Dicecup cup;
+    private DiceCup cup;
     private int[] hand;
     private int[] board;
     private String[] categories = {"ones","twos","threes","fours","fives","sixes","upper section bonus","three of a kind","four of a kind","full house","small straight","large straight","chance","yahtzee"};
     private ArrayList<String> unusedCategories;
 
-public Scoresheet(Player currentPlayer, Dicecup cup) {
+public Scoresheet(Player currentPlayer, DiceCup cup) {
     this.currentPlayer = currentPlayer;
     this.cup = cup;
     this.hand = cup.getHand();
@@ -125,7 +125,7 @@ public int scoreSimple(int categoryIndex) {
 }
 
 
-/* scoreComplex() contains methods to get the score for categories with index greater than 5
+/* scoreComplex() contains methods to get the score from the hand for categories with index greater than 5
  * Test Comment (remove me)
  * @param: categoryIndex
  * @return: score
