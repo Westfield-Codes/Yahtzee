@@ -21,56 +21,36 @@ public class Round {
 
     private int playRound(){
         this.roundNum++;
+        if (this.roundNum > 13) {
+            System.out.println("Game Over! No more rounds left.");
+            System.out.println("Implement showScores()");
+        }
+       else {
         for (Player player : players) {
+            System.out.println("Round " + this.roundNum + ": " + player.getName() + "!");
             takeTurn(player);
         }
+       }
     }
 
     private void takeTurn(Player player) {
         int roll = 0;
         while (roll < 3) {
-            // Sets all 5 dice to be rolled on 1st round
             if (roll == 0) {
                 player.cup.clearHeld();
                 player.cup.rerollDice();
                 
             }
             else {
-                player.cup.setHeld(held);
+                player.cup.setHeld();
                 player.cup.rerollDice();
             }
-       =
-            
-            // Rolls the amount of dice not being held
-            boolean[] diceToRoll = DiceCup.getHeld();
-            int[] dice = DiceCup.rollDice(diceToRoll);
-            player.addToScore(dice);
-
-            // Asks user whether to roll again
-            System.out.println("Would you like to roll again? (Y/N) ");
-            String rollAgain = input.nextLine().toLowerCase();
-
-            if (rollAgain.equals("n")) {
-                shouldContinue = false;
-                System.out.println("Scoring now.");
-            }
-
-            // Asks the user for input & updates the hold array
-            else {
-                for (int i = 0; i < cup.getHeld().length; i++) {
-                    System.out.println("Hold die #" + (i + 1) + "? (Y/N) "); // Adding 1 to the number of dice; Die #1 rather than Die #0 for first die
-                    String holdDie = input.nextLine().toLowerCase();
-                    if (holdDie.equals("y")) {
-                        cup.setHeld(i, true);
-                    }
-                }
-            }
-
-            // Increases the roll count for a maximum of 3 rolls
-            roll++;
-        }
-
-
+            System.out.println("Your New Hand: " + player.cup.getHand().toString);
+       }
+        System.out.println("Score your hand where?");
+        String response = input.nextLine().trim().toLowerCase();
+        player.cup.scoreHand();
+        System.out.println("End of turn for " + player.getName() + ".");
     }
 
     /******** Instructions ********
