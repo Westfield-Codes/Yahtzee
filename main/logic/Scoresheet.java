@@ -3,16 +3,16 @@ package main.logic;
 import java.util.ArrayList;
 
 public class Scoresheet {
-    private Player currentPlayer;
+    // private Player currentPlayer;
     private DiceCup cup;
     private int[] hand;
     private int[] board;
     private String[] categories = {"ones","twos","threes","fours","fives","sixes","upper section bonus","three of a kind","four of a kind","full house","small straight","large straight","chance","yahtzee"};
     private ArrayList<String> unusedCategories;
 
-public Scoresheet(Player currentPlayer, DiceCup cup) {
-    this.currentPlayer = currentPlayer;
-    this.cup = cup;
+public Scoresheet() {
+    // this.currentPlayer = currentPlayer;
+    // this.cup = cup;
     this.hand = cup.getHand();
     this.board = makeBoard();
     this.unusedCategories = makeCategoryList();
@@ -252,6 +252,10 @@ public int scoreSimple(int categoryIndex) {
         return false; // Default return if no category matches;
     }
 
+/* sortArray() sorts the hand array in ascending order
+    * @param: hand
+    * @return: ordered array of integers
+*/
     public int[] sortArray(int[] hand) {
 
         int[] ordered = new int[5];
@@ -270,7 +274,10 @@ public int scoreSimple(int categoryIndex) {
     }
     
     
-
+/* ofAKind() checks if there is an amount of repetitions for set number of dice
+ * @param: amount
+ * @return: true if there is an amount of repetitions, false if not
+ */
     public boolean ofAKind(int amount) {
         for(int i = 0; i < 6; i++) {
             int repeat = 0;
