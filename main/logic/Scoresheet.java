@@ -76,12 +76,11 @@ public ArrayList<String> makeCategoryList() {
 /* scoreHand() returns score of hand for given category
  * @param: category
  * @return: score
+ * Ok pm
  */
 public int scoreHand(String category) {
    int score = 0;
-   int[] hand = cup.getHand();
-   if (this.board.validCategory(category)) {
-    for(int i = 0; i < categories && verify)
+   if (validCategory(category)) {
         if(indexOf(category) < 6) {
             score += scoreSimple(indexOf(category));
         } else {
@@ -102,10 +101,9 @@ public int indexOf(String target) {
     for(int i = 0; i < categories.length; i++) {
         if (categories[i].equals(target)) {
             return i;
-        } else {
-            return -1;
-        }
+        } 
     } 
+    return -1; // return -1 if not found
 }
 
 /* scoreSimple() scores categories with index less than 6
@@ -129,6 +127,7 @@ public int scoreSimple(int categoryIndex) {
  * Test Comment (remove me)
  * @param: categoryIndex
  * @return: score
+ * Ok pm
  */
  public int scoreComplex(int categoryIndex) {
     if(categoryIndex == 6) {
@@ -136,7 +135,7 @@ public int scoreSimple(int categoryIndex) {
     }
     if(categoryIndex == 7 || categoryIndex == 8) {
         int total = 0;
-        for(int value : hand[]) {
+        for(int value : this.hand) {
             total += value;
         }
         return total;
@@ -152,7 +151,7 @@ public int scoreSimple(int categoryIndex) {
     }
     if(categoryIndex == 12) {
         int total = 0;
-         for(int value : hand[]) {
+         for(int value : this.hand) {
             total += value;
         }
         return total;
@@ -161,6 +160,7 @@ public int scoreSimple(int categoryIndex) {
     if (categoryIndex == 13) {
         return 50;
     }
+    return 0; // Default return if no category matches 
  }
 
 
@@ -170,7 +170,7 @@ public int scoreSimple(int categoryIndex) {
                 return true;
             }
         
-        if(categoryIndex = 6) {
+        if(categoryIndex == 6) {
             int total = 0;
             for(int i = 0; i < 6; i++) {
                 total += board[i];
@@ -192,7 +192,7 @@ public int scoreSimple(int categoryIndex) {
             boolean hasThreePair = false;
             for(int i = 0; i < 6; i++) {
                 int repeat = 0;
-                for(int j = 0; j hand.length; j++) {
+                for(int j = 0; j< hand.length; j++) {
                     if(hand[j] == i + 1) {
                     repeat++;
                     }
@@ -204,16 +204,16 @@ public int scoreSimple(int categoryIndex) {
                 hasThreePair = true;
                 }
                 }
-                if(hasTwoPair = true && hasThreePair = true) {
+                if(hasTwoPair && hasThreePair) {
                     return true;
                 } else {
                     return false;
                 }
-                }
+            }
 
             
         if(categoryIndex == 10) {
-            ArrayList<Integer> ordered = sortArray(getHand());
+            int[] ordered = sortArray(cup.getHand());
             String allDie = "";
             for(int num : ordered) {
             allDie += "" + num;
@@ -227,7 +227,7 @@ public int scoreSimple(int categoryIndex) {
         }
 
         if (categoryIndex == 11) {
-            ArrayList<Integer> ordered = sortArray(getHand());
+            int[] ordered = sortArray(cup.getHand());
             String allDie = "";
             for(int num : ordered) {
                 allDie += "" + num;
@@ -246,6 +246,10 @@ public int scoreSimple(int categoryIndex) {
         if(categoryIndex == 13) {
             return ofAKind(5);
         }    
+        if (categoryIndex < 0 || categoryIndex >= categories.length) {
+            return false; // Invalid category index
+        }
+        return false; // Default return if no category matches;
     }
 
     public int[] sortArray(int[] hand) {
@@ -264,20 +268,21 @@ public int scoreSimple(int categoryIndex) {
         }
         return ordered;
     }
+    
+    
 
     public boolean ofAKind(int amount) {
         for(int i = 0; i < 6; i++) {
             int repeat = 0;
-            for(int j = 0; j hand.length; j++) {
+            for(int j = 0; j < hand.length; j++) {
                 if(hand[j] == i + 1) {
                     repeat++;
                 }
             }
-            if (repeat => amount) {
+            if (repeat >= amount) {
                 return true;
-            } else {
-                return false;
             }
         }
+        return false;
     }
 }
