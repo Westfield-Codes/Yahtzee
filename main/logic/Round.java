@@ -1,7 +1,6 @@
 package main.logic;
 import java.util.Scanner;
-import DiceCup.java;
-import Player.java;
+import java.util.ArrayList;
 
 /* A round is attached to a player. */
 public class Round {
