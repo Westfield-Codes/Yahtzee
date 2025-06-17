@@ -1,6 +1,5 @@
 package main.logic;
-
-import java.sql.Array;
+import java.util.Scanner;
 
 public class DiceCup {
     private int[] hand;
@@ -24,7 +23,12 @@ public class DiceCup {
     public void setHeld() {
         System.out.println("Your current hand: " + this.getHand().toString());
         System.out.print("Hold which dice? a = all, n = none: ");
-        String toHold = scanner.nextLine();
+        Scanner sc = new Scanner(System.in);
+        String toHold = sc.nextLine();
+        if (toHold == null) {
+            System.out.println("No input received.");
+            return;
+        }
         if (toHold.equalsIgnoreCase("a")) {
             for (int i = 0; i < this.hold.length; i++) {
                 this.hold[i] = true;
@@ -39,7 +43,7 @@ public class DiceCup {
         }
         else {
             String[] holds = toHold.split(",");
-            for (int die : holds) {
+            for (String die : holds) {
                 try {
                     int index = Integer.parseInt(die.trim());
                     if (index >= 0 && index < this.hold.length) {
@@ -57,7 +61,9 @@ public class DiceCup {
     }
 
     public void clearHeld() {
-        this.hold ={false, false, false, false, false};
+        for (int d = 0; d < 5; d++){
+            this.hold[d]=false;
+        }
     }
     public int rollDie() {
         return (int) (Math.random() * 6) + 1;
